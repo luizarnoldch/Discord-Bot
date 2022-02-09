@@ -1,8 +1,8 @@
 module.exports = {
     database: {
-        host: 'localhost',
-        user: 'root',
-        password: 'FisiCalidad',
-        database: 'test_appstorm'
+        host: `${process.env.MYSQL_HOST}`,
+        user: `${process.env.MYSQL_USER}`,
+        password: `${process.env.MYSQL_PASSWORD}`,
+        database: `${process.env.MYSQL_DATABASE}`
     }
 };

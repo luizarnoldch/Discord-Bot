@@ -18,23 +18,21 @@ client.on('messageCreate', async message => {
     const username = message.author.username
 
     if(content === 'on'){
-    message.reply(
-    `
-        asistencia de entrada por: ${message.author}
-        dia: ${dias[createdAt.getDay()]} 
-        fecha:     ${createdAt.getDate()}/${createdAt.getMonth()+1}
-        hora:       ${createdAt.getHours()}:${createdAt.getMinutes()}
-    `)
-    
-    const asistente = {
-        nombre_asistencia: username,
-        entrada_asistencia: createdAt
-    }
+        message.reply(
+        `
+            asistencia de entrada por: ${message.author}
+            dia: ${dias[createdAt.getDay()]} 
+            fecha:     ${createdAt.getDate()}/${createdAt.getMonth()+1}
+            hora:       ${createdAt.getHours()}:${createdAt.getMinutes()}
+        `)
+        
+        const asistente = {
+            nombre_asistencia: username,
+            entrada_asistencia: createdAt
+        }
 
-    await pool.query(`INSERT INTO asistencias SET ?`,[asistente])
-    
+        await pool.query(`INSERT INTO asistencias SET ?`,[asistente])
     }
-
 });
 
 client.login(process.env.TOKEN);
